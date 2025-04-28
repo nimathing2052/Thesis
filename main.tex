@@ -95,7 +95,7 @@
 {\normalsize Matriculation Number: 231291 \par}
 \vspace{0.5cm}
 
-{\normalsize Word Count: 7603  \par}
+{\normalsize Word Count: 7694  \par}
 \vspace{0.5cm}
 
 {\normalsize\@date \par}
@@ -199,25 +199,6 @@ The interplay between communication styles and content themes is a critical driv
 However, existing codebooks for TikTok communication styles \parencite{umansky2023dances} are often Western-centric, lacking cultural specificity for contexts like Nepal. Nepalese political content frequently incorporates local elements, such as mimicry, folk music, and rap, reflecting the country’s linguistic and cultural diversity. For instance, independent candidates like Balen Shah promotional campaign was mostly rap/hiphop to connect with youth voters, blending political themes with entertainment \parencite{menge2022kathmandu}. Despite this, there is no standardized codebook for Nepalese election contexts, nor has research systematically examined how these styles interact with political themes (e.g., support for legacy parties vs. independents) to drive virality. This study fills this gap by developing a culturally adapted codebook and using regression analysis to explore style–theme interactions in Nepal’s 2022 election TikTok videos.
 
 
-% This study addresses these gaps by: (1) predicting political virality on TikTok using pre-upload multimodal features (RQ1), filling the gap in computational studies in Nepal; and (2) examining the interaction between culturally relevant communication styles and political content themes (RQ2), contributing a Nepal-specific framework for understanding engagement. By combining machine learning (XGBoost) and regression (OLS) with a focus on Nepal’s 2022 elections, this research advances both political communication scholarship and computational social science in a low-resource electoral context.
-
-% Chapter 2: Literature Review
-% \chapter{Literature Review}
-
-% Social media has transformed political communication by enabling rapid information dissemination, amplifying grassroots movements, and shaping public discourse \parencite{van2013socialmedia}. Platforms like Facebook and Twitter have been extensively studied for their role in agenda-setting and voter mobilization \parencite{mcgregor2019socialmediaelections}, with research showing that social media activity can influence electoral outcomes in some contexts \parencite{bode2016campaign}. However, findings are mixed, with studies like \textcite{ling2024crossplatform} suggesting that virality on one platform (e.g., TikTok) often correlates with virality on others (e.g., Facebook), while others find no direct link between online engagement and campaign success \parencite{johnson2024socialmediaelections}. In Nepal, where social media use is growing but understudied, platforms have become key spaces for political expression, particularly among youths frustrated with the country’s political instability \parencite{bhattarai2023socialmediaagenda}. During the 2022 local elections, independent candidates like Balen Shah leveraged social media to gain prominence, supported by influencers and pages like Routine of Nepal Bandha (over 1 million TikTok followers), highlighting the platform’s role in bypassing traditional media \parencite{wiki2022nepalelections}.
-
-% TikTok, with its short-form video format and algorithm-driven virality, has emerged as a unique platform for political messaging \parencite{literat2023tiktokpolitics}. Its affordances---including the ability to create engaging, shareable content---make it particularly appealing to younger voters \parencite{medina2023tiktokyouth}. Studies have explored TikTok’s role in political discourse, focusing on content themes like populism \parencite{ingelstam2023populism} and communication styles such as humor and critique \parencite{umasky2023tiktokstyles}. For instance, \textcite{farkas2021narrativepersuasion} argue that styles like Critique/Frustration can elicit engagement by resonating with audience sentiments, contributing to wider message circulation. However, there is a scarcity of research on TikTok’s impact in low-resource settings like Nepal, where linguistic diversity and code-switching (e.g., Nepali-English) pose unique challenges \parencite{dhakal2024tiknep}.
-
-% Virality prediction on social media has been widely studied, often using features like content (text, audio, video), platform metadata, and sender characteristics \parencite{berger2012virality}. Multimodal models incorporating text, audio, and visual features have shown promise in predicting virality on platforms like Twitter \parencite{jenders2017virality}, but TikTok-specific studies are limited. \textcite{literat2023tiktokpolitics} highlight the need for standardized metrics to define virality on TikTok, particularly in political contexts, as thresholds (e.g., 250,000 views for "mildly viral" \parencite{ingelstam2023populism}) vary by region and platform. In Nepal, the lack of a standardized definition for virality in the context of local elections further complicates prediction efforts. Moreover, while TikTok’s Developer API has enabled research in regions like the US and EEA \parencite{tiktok2023api}, access remains restricted in Nepal, forcing researchers to rely on unofficial APIs or manual data collection \parencite{dhakal2024tiknep}.
-
-% The interplay between communication styles and content themes in driving virality is another underexplored area. Studies like \textcite{umasky2023tiktokstyles} identify styles such as Comedic, Civic Awareness, and Charisma/Leadership, but there is no standardized codebook for election contexts, particularly in Nepal. \textcite{cseri2024engagement} suggest that charismatic and emotionally resonant styles (e.g., catchy songs, simple narratives) often outperform complex policy-focused content in engaging audiences. This is particularly relevant in Nepal, where candidates like Balen Shah, with a background in hip-hop, used charismatic appeal to connect with voters \parencite{wiki2022nepalelections}. However, the rise of viral content also poses risks, as controversial posts can deepen polarization and exploit TikTok’s algorithm for attention rather than constructive discourse \parencite{rattclif2020filterbubbles, vandijck2013popularity}.
-
-% This study addresses these gaps by developing a multimodal predictive model for TikTok virality in the context of Nepal’s 2022 local elections (RQ1) and examining how communication styles and political content themes interact to influence engagement (RQ2). By leveraging pre-upload features (content, platform, sender characteristics) and analyzing user-generated content from election-related hashtags, this research provides a novel framework for understanding virality in a low-resource setting. It also contributes to the operationalization of virality metrics for the Nepali context and explores the strategic use of TikTok by political actors, offering insights into the platform’s role in modern electoral campaigns.
-% % To be filled: Previous work on digital virality, populism, youth politics in South Asia
-% \section{Social Media and Political Engagement}
-% \section{Virality in Digital Platforms}
-% \section{TikTok as a Political Communication Tool}
-% \section{Gaps in Existing Research}
 \chapter{Research Questions}
 \label{sec:research_questions}
 
@@ -232,9 +213,6 @@ The study addresses two research questions (RQs):
     
     This question examines the interplay between communication styles (e.g., Comedic, Civic Awareness, Charisma/Leadership) and political content themes (e.g., Independent candidates, legacy parties, general election content) in driving engagement. Through regression analysis, the study explores how strategic stylistic choices align with audience expectations and political sentiment, shaping virality outcomes. 
 \end{enumerate}
-
-% These research questions collectively address the mechanisms of digital political engagement, combining predictive modeling with interpretive analysis to illuminate the interplay of technology, culture, and politics on TikTok. The findings contribute to broader scholarship on social media’s role in democratic processes, with specific relevance to Nepal’s evolving political landscape.
-% Chapter 3: Data and Methodology
 
 \chapter{Research Design}
 This study employs a mixed-methods approach, combining machine learning for virality prediction (RQ1) and regression-based content analysis for style–theme interactions (RQ2), to examine TikTok’s role in Nepal’s 2022 local elections. The design leverages multimodal data (text, audio, visual) and platform metadata, integrating computational techniques with political communication theory.
@@ -409,31 +387,7 @@ Data collection complied with TikTok’s privacy policies. No PII was collected.
 
 \chapter{Results}
 \section{Exploratory Analysis}
-Exploratory Analysis was conducted on the full dataset.
-%\subsection{Dataset Summary}
-
-% Table~\ref{tab:dataset_summary} presents a high-level overview of the complete dataset used for this analysis. It includes over 28,000 TikTok videos. We also identify nearly 20,000 unique users, with a very small proportion of verified accounts.
-
-% \begin{table}[htbp]
-%     \centering
-%     \begin{tabular}{lr}
-%         \toprule
-%         \textbf{Metric} & \textbf{Count} \\
-%         \midrule
-%         Total Videos & 28,165 \\
-%         Total Transcripts & 28,165 \\
-%         Total Comments & 307,156 \\
-%         Total Views & 186,348,152 \\
-%         Total Shares & 214,808 \\
-%         Total Likes & 14,334,935 \\
-%         Total Saves/Collects & 83,422 \\
-%         Unique Users & 19,993 \\
-%         Verified Users & 9 \\
-%         \bottomrule
-%     \end{tabular}
-%     \caption{Dataset summary statistics}
-%     \label{tab:dataset_summary}
-% \end{table}
+Exploratory Analysis was conducted on the full dataset. For Dataset summary (see Table~\ref{tab:dataset_summary})
 
 \subsection{Number of Videos Over Time}
 Figure~\ref{fig:tiktok_video_post} illustrates the volume of TikTok videos posted over this time frame. A noticeable rise in content production is observed as the election approaches, peaking sharply on Election Day (May 13, 2022).
@@ -459,7 +413,11 @@ Figure~\ref{fig:tiktok_heatmap_postcount} reveals that most video posts occur on
 
 \subsection{Top Keywords in Video Descriptions}
 
-The dataset includes 20,237 unique hashtags extracted from video descriptions. Table~\ref{fig:top_political_hashtag} lists the 20 most frequently occurring hashtags in the political genre along with their respective counts. The hashtag \texttt{election} appears most often (5654 occurrences), followed by entries with missing or null hashtags represented by \texttt{0}. Commonly used trending terms such as \texttt{viral}, \texttt{goviral}, and \texttt{fyp} also appear frequently, indicating strategies to increase visibility. However, for the purpose of specificity related to election(more particularly political party support), Table~\ref{fig:top_political_hashtag} was created to showcase only political labels. 
+The dataset includes 20,237 unique hashtags extracted from video descriptions. 
+
+After applying a custom stopword filter to remove generic or repetitive terms (e.g., \texttt{fyp, viral, trending}), we generated a word cloud to visualize prominent hashtags. Figure~\ref{fig:wordcloud} reveals Nepali keywords like \textit{chunab} ("election") and \textit{chunablagyo} ("election vibes"), as well as direct references to political campaigns. Note that some Devanagari (Nepali) script tokens are rendered as square boxes due to font encoding limitations.
+
+Furthermore,Table~\ref{fig:top_political_hashtag} lists the 20 most frequently occurring hashtags in the political genre along with their respective counts.
 
 \begin{figure}[htbp]
     \centering
@@ -468,15 +426,13 @@ The dataset includes 20,237 unique hashtags extracted from video descriptions. T
     \label{fig:top_political_hashtag}
 \end{figure}
 
-% \begin{figure}[htbp]
-% \centering
-% \includegraphics[width=0.60\textwidth]{figures/EDA/wordcloud.jpg}
-% \caption{Top Filtered hashtags after removing trending terms}
-% \label{fig:wordcloud}
-% \end{figure}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.60\textwidth]{figures/EDA/wordcloud.jpg}
+\caption{Top Filtered hashtags after removing trending terms}
+\label{fig:wordcloud}
+\end{figure}
 
-
-% Additionally, after applying a custom stopword filter to remove generic or repetitive terms (e.g., \texttt{fyp, viral, trending}), we generated a word cloud to visualize prominent hashtags. Figure~\ref{fig:wordcloud} reveals Nepali keywords like \textit{chunab} ("election") and \textit{chunablagyo} ("election vibes"), as well as direct references to political campaigns. Note that some Devanagari (Nepali) script tokens are rendered as square boxes due to font encoding limitations.
 % To be filled: Classifier performance, SHAP visualizations, regression coefficients
 \clearpage
 \section{Virality Prediction Results}
@@ -803,7 +759,7 @@ While this study achieved 60\% predictive accuracy for virality using selected p
 
     \item \textbf{Platform Features}:
         \begin{itemize}
-            \item The \texttt{video\_diversification\_id} (e.g., \texttt{video\_diversification\_id\_10083.0}) had sparse, missing API labels, complicating content type interpretation (Table~\ref{tab:diversification_label}). Overfitting to dominant IDs (e.g., \texttt{video\_diversification\_id\_0.0}) may reduce generalizability for impactful, less frequent IDs influencing high virality (Class 2).
+            \item The \texttt{video\_diversification\_id} (e.g., \texttt{id\_10083.0}) had sparse, missing API labels, complicating content type interpretation (Table~\ref{tab:diversification_label}). Overfitting to dominant IDs (e.g., \texttt{video\_diversification\_id\_0.0}) may reduce generalizability for impactful, less frequent IDs influencing high virality (Class 2).
         \end{itemize}
 \newpage
     \item \textbf{Transformer Models for Low-Resource Settings}:
@@ -811,7 +767,14 @@ While this study achieved 60\% predictive accuracy for virality using selected p
             \item Open-source models like Wiseyak \parencite{duwal2024domainadaptativecontinuallearninglowresource} and NepaliBERT \parencite{Pudasaini2023NepaliBERT} were limited to Devanagari text, and still surprisingly underperformed on Devanagiri setting, let alone mixed Romanized Nepali-English content. SeamlessM4T \parencite{elbayad2023seamlessm4t, facebookresearch2023seamlessm4t, huggingface2024seamlessm4t} excelled in transliteration and translation than Nepalese fine-tuned counterpart (for Devanagiri). Comparative analysis among these models were not acknowledged due to time constraints.
             \item No Hugging Face model fully addressed transliteration, translation, and semantic embedding for code-switched Nepali-English text. SeamlessM4T-medium handled Devanagari better, but struggled with code-switching, while OpenAI’s API proved more accurate \parencite{reddit2023gpt4nepali}.
         \end{itemize}
+
+    \item \textbf{Data Limitations}:
+
+    The TikTok Research API, while enabling access to public data, suffers from archiving delays and incomplete historical records, limiting accurate view and engagement counts for Nepal’s 2022 election videos \parencite{tiktokResearchAPI2025}. As a relatively new API, it offers room for improvement in data reliability and historical access. Additionally, unofficial APIs \parencite{QBukold2025TikTokScraper}, reliant on web-inspect elements, may have some inaccuracies, as manual inspections revealed discrepancies in variables like \texttt{video\_is\_ai\_gc}, where it is null in metadata, but exists in the actual video.
+    
 \end{itemize}
+
+
 \newpage
 \section{Future Research}
     Future research could address these limitations by:
@@ -838,6 +801,28 @@ While this study achieved 60\% predictive accuracy for virality using selected p
 %TC:ignore
 \chapter{Appendix}
 
+\subsection*{Dataset Summary}
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{lr}
+        \toprule
+        \textbf{Metric} & \textbf{Count} \\
+        \midrule
+        Total Videos & 28,165 \\
+        Total Transcripts & 28,165 \\
+        Total Comments & 307,156 \\
+        Total Views & 186,348,152 \\
+        Total Shares & 214,808 \\
+        Total Likes & 14,334,935 \\
+        Total Saves/Collects & 83,422 \\
+        Unique Users & 19,993 \\
+        Verified Users & 9 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Dataset summary statistics}
+    \label{tab:dataset_summary}
+\end{table}
+\clearpage
 \phantomsection
 \addcontentsline{toc}{section}{Appendix}
 \subsection*{Keywords and Hashtags for Nepal Local Election 2022}
@@ -1043,9 +1028,12 @@ Other/Non-Political & Miscellaneous content, including non-political explanatory
 
 
 % To be filled: Supplementary tables, GitHub links, code snippets, additional figures
-\chapter{Supplementary Materials}
 \section{GitHub Repository Details}
-\section{Additional Tables and Figures}
+
+The source code for this project is publicly available on GitHub at the following link:\\
+\url{https://github.com/nimathing2052/TikTok_Prediction}
+
+If you are unable to access the repository, please feel free to contact the author for access.
 
 \begin{sidewaystable}[ht]
 \centering
