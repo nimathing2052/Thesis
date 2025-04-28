@@ -6,11 +6,11 @@
 \usepackage{polyglossia}
 \setmainlanguage{english}
 \usepackage{fontspec}
-\usepackage{float}
 \newfontfamily\nepalifont{Noto Sans Devanagari}[Script=Devanagari,Renderer=HarfBuzz]
+\usepackage{float}
 \usepackage{graphicx}
 \usepackage{amsmath, amssymb}
-\usepackage[style=apa, backend=biber, url=true, natbib=true]{biblatex} % Removed natbib package, added natbib=true for compatibility
+\usepackage[style=apa, backend=biber, url=true, natbib=true]{biblatex}
 \addbibresource{references.bib}
 \usepackage{setspace}
 \usepackage{geometry}
@@ -20,9 +20,7 @@
 \usepackage{caption}
 \usepackage{rotating}
 \usepackage{siunitx}
-\usepackage{amsmath}
 \usepackage{enumitem}
-\usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{pdflscape}
 \geometry{a4paper, top=3.5cm, bottom=3cm, left=3.5cm, right=3cm}
@@ -49,29 +47,114 @@
 \pagestyle{fancy}
 \fancyhf{}
 \rhead{\thepage}
-\lhead{TikTok Political Virality Thesis}
+\lhead{Predicting Tiktok Virality in Nepal}
 
 % ---------------- Title Info ----------------
-\title{\textbf{Predicting Political Virality on TikTok: A Multimodal Analysis of the 2022 Nepal Local Elections}}
-\author{Nima Thing\\Hertie School | MSc Computational Social Science}
-\date{\today}
+\title{Predicting TikTok virality: Machine learning insights from Nepal’s 2022 election }
+\author{Nima Thing}
+\date{April 2025}
+
+% Redefine \maketitle for custom title page
+\makeatletter
+\renewcommand{\maketitle}{
+\begin{titlepage}
+\thispagestyle{empty}
+\onehalfspacing
+\setlength{\parskip}{0.5em}
+\setlength{\parindent}{0pt}
+
+% Logo in top-right corner
+\begin{minipage}{0.3\textwidth}
+\raggedleft
+\vspace*{1cm}
+\includegraphics[width=0.9\textwidth]{figures/hertie_logo.png}
+\end{minipage}
+
+% Centered content
+\begin{center}
+\vspace*{2cm}
+{\Large\bfseries\@title \par} % Reduced from \huge to closer to 12pt
+\vspace{1.5cm}
+
+{\normalsize\@author \par} % 12pt
+\vspace{1cm}
+
+{\normalsize In partial fulfillment of the requirements for the degree of \par}
+{\normalsize Master of Data Science for Public Policy \par}
+\vspace{0.5cm}
+
+{\normalsize Hertie School \par}
+\vspace{0.5cm}
+
+{\normalsize Supervisor: Prof. Dr. Simon Munzert \par}
+\vspace{0.5cm}
+
+{\normalsize Academic Year: 2025 \par}
+\vspace{0.5cm}
+
+{\normalsize Matriculation Number: 231291 \par}
+\vspace{0.5cm}
+
+{\normalsize Word Count: 7603  \par}
+\vspace{0.5cm}
+
+{\normalsize\@date \par}
+\vspace{1cm}
+
+\end{center}
+\end{titlepage}
+}
+\makeatother
 
 \begin{document}
+
+% ---------------- Roman Numerals for Front Matter ----------------
+\pagenumbering{roman}
 
 % ---------------- Title Page ----------------
 \maketitle
 
 % ---------------- Executive Summary ----------------
 
-\chapter{Executive Summary}
-
-Nepal’s 2022 elections marked a turning point in political communication, with TikTok emerging as a powerful tool for political engagement amid widespread youth disillusionment with traditional parties. Beyond mere platform adoption, virality on TikTok—measured through likes, shares, and comments—became a crucial mechanism for amplifying political narratives and shaping public discourse. Although all major parties and independent candidates actively used social media, independent voices like Balen Shah (current Mayor of Kathmandu) especially harnessed TikTok’s short-form, algorithm-driven reach to mobilize grassroots support.
+\begin{abstract}
+Nepal’s 2022 elections marked a turning point in political communication, with social media platforms such as Facebook, YouTube, and TikTok emerging as a powerful tool for political engagement amid widespread youth disillusionment with traditional parties. Beyond mere platform adoption, virality on TikTok—measured through likes, shares, and comments—became a crucial mechanism for amplifying political narratives and shaping public discourse. 
 
 Despite TikTok’s growing influence, little research has systematically examined how political content achieves virality on the platform, particularly in low-income, multilingual democracies like Nepal. Understanding and predicting virality is not only methodologically innovative—leveraging multimodal machine learning on audio, image, and text data—but also critical for unpacking how digital spaces shape electoral dynamics.
 
 This study analyzes 2,964 political TikTok videos accessed via TikTok’s Research API, applying machine learning (XGBoost) and statistical modeling (OLS regression) to predict engagement outcomes. The XGBoost model achieved approximately 60\% accuracy, identifying sender characteristics as key predictors (mean $|\text{SHAP}| \approx 0.4$), while also revealing algorithmic biases favoring established creators, raising equity concerns. Furthermore, communication styles such as humor and charismatic leadership, particularly when tied to independent political narratives, significantly boosted virality, reflecting Nepal’s culturally diverse digital landscape.
 
-The research provides an open-source multimodal virality prediction pipeline, operationalized engagement metrics, and a cross-platform framework adaptable to platforms like YouTube Shorts. It offers critical insights for political strategists, platform designers, and policymakers aiming to promote equitable online political discourse and strengthen democratic participation in emerging digital democracies like Nepal.
+The research provides an open-source multimodal virality prediction pipeline, operationalized engagement metrics, and a cross-platform framework adaptable to platforms like YouTube Shorts. It offers critical insights for political strategists and policymakers aiming to promote equitable online political discourse and strengthen democratic participation in emerging digital democracies like Nepal.
+\end{abstract}
+
+% ---------------- Table of Contents ----------------
+\clearpage
+\tableofcontents
+
+% ---------------- List of Tables ----------------
+\clearpage
+\listoftables
+
+% ---------------- List of Abbreviations ----------------
+\clearpage
+\section*{List of Abbreviations}
+\addcontentsline{toc}{section}{List of Abbreviations}
+\begin{tabular}{ll}
+\textbf{Abbreviation} & \textbf{Definition} \\
+\hline
+API & Application Programming Interface \\
+CPN UML & Communist Party of Nepal (Unified Marxist-Leninist) \\
+LaBSE & Language-agnostic BERT Sentence Embedding \\
+MiniLM & Mini Language Model \\
+OLS & Ordinary Least Squares \\
+SHAP & SHapley Additive exPlanations \\
+TikTok & Social media platform for short-form videos \\
+XGBoost & eXtreme Gradient Boosting \\
+\end{tabular}
+
+% ---------------- Main Content with Arabic Numerals ----------------
+\clearpage
+\pagenumbering{arabic}
+
 
 \chapter{Introduction}
 Nepal’s 2022 local and provincial elections (2079 B.S.) marked a significant shift in the landscape of political communication, with TikTok emerging as a prominent platform alongside more established channels such as Facebook and YouTube \parencite{nepalitimes2025}. These platforms increasingly competed for influence, effectively cannibalizing attention and engagement from traditional media as political parties sought to expand their digital reach. One of the most notable developments was the growing use of these platforms as agenda-setting tools, particularly in mobilizing and engaging the country’s youth amid rising disillusionment with legacy political structures \parencite{FPExplainers2024, dahal2023influence}.
@@ -86,6 +169,7 @@ This study offers three key contributions:
 \begin{itemize}
     \item \textbf{Academic}: It provides a novel and open-source codebase for multimodal virality analysis, filling a gap in computational political communication research in Nepal.
     \item \textbf{Methodological}: It operationalizes virality through a weighted engagement score (combining views, likes, comments, shares, collects) and compares machine learning models (XGBoost, Random Forest) to identify optimal predictive approaches for TikTok data.
+\newpage
     \item \textbf{Practical}: By analyzing communication styles, cultural elements, and musical styles (e.g., rap, Nepali folk), it offers actionable insights for political candidates and content creators to enhance audience reach in Nepal’s diverse digital landscape.
 \end{itemize}
 
@@ -101,7 +185,7 @@ Social media platforms have transformed political communication by enabling rapi
 
 In Nepal, social media has become a vital space for political expression, especially among youths frustrated with the country’s history of political volatility \parencite{bhandari2024weaponizing}. \parencite{dahal2023influence} highlight that unorganized groups and individual creators played a significant role in shaping public discourse, often amplifying anti-establishment sentiments. However, much of the research on social media in Nepal remains qualitative, focusing on user perceptions rather than systematic, data-driven analyses of engagement dynamics. 
 
-
+\newpage
 \subsection{Virality Prediction on Social Media}
 
 Predicting virality on social media has been a focus of computational social science, with studies identifying key drivers such as content features, platform dynamics, and sender characteristics \parencite{berger2012viral}. \parencite{SahJordan2025DecodingReddit} used multi-modal features (text, images, user metadata) to predict Reddit Meme virality, where certain temporal features and content layout was quite significant. Additional work include an  explored video-based platforms, with \parencite{nisa2021optimizing} applying XGBoost Learning algorithm to predict YouTube video popularity using visual and audio features, however, here popularity is primarily based on view\_counts. Besides, the study also doesn't formally operationalize virality, but rather exponential spread in short time, which may not fully capture overall virality as an distinct phenomenon. However, TikTok-specific studies on virality prediction on large dataset are even scarce, largely due to data access restrictions and relative novelty on opening up its research API.
@@ -111,7 +195,7 @@ In political contexts, virality prediction is particularly complex, as engagemen
 \subsection{Communication Styles and Content Themes}
 
 The interplay between communication styles and content themes is a critical driver of engagement on TikTok, particularly in political contexts \parencite{umansky2023dances}. \parencite{schellewald2021communicative} identified styles such as Comedic, Communaal, and Meta on TikTok, noting that humorous content often garners higher engagement due to its emotional appeal. In political settings, \parencite{cseri2024masterarbeit} found that styles like Charisma/Leadership—often through personalization and visuals rhetoric elicit higher engagement metrics. Styles like Critique/Frustration also resonate with audiences by amplifying anti-establishment sentiments, a trend observed in Nepal’s 2022 elections \parencite{dahal2023influence}.
-
+\newpage
 However, existing codebooks for TikTok communication styles \parencite{umansky2023dances} are often Western-centric, lacking cultural specificity for contexts like Nepal. Nepalese political content frequently incorporates local elements, such as mimicry, folk music, and rap, reflecting the country’s linguistic and cultural diversity. For instance, independent candidates like Balen Shah promotional campaign was mostly rap/hiphop to connect with youth voters, blending political themes with entertainment \parencite{menge2022kathmandu}. Despite this, there is no standardized codebook for Nepalese election contexts, nor has research systematically examined how these styles interact with political themes (e.g., support for legacy parties vs. independents) to drive virality. This study fills this gap by developing a culturally adapted codebook and using regression analysis to explore style–theme interactions in Nepal’s 2022 election TikTok videos.
 
 
@@ -179,7 +263,7 @@ After removing videos that became private or irrelevant, the final sample was 2,
 As illustrated in Figure~\ref{fig:data_schema}, the dataset is further enriched post-sampling with audio transcripts and image analysis. These additional features, derived through the processing pipeline depicted in Figure~\ref{fig:data_pipeline}, complete the multimodal data collection for the sampled dataset (detailed in the following section).
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth, page=1]{figures/data_collection.pdf}
+    \includegraphics[width=0.6\textwidth, page=1]{figures/data_collection.pdf}
     \caption{Data Collection Pipeline}
     \label{fig:data_pipeline}
 \end{figure}
@@ -192,18 +276,13 @@ As illustrated in Figure~\ref{fig:data_schema}, the dataset is further enriched 
 \newpage
 \section{Feature Engineering}
 \subsection{Operationalizing Virality (Dependent Variable)}
-There is currently no universally accepted standard measure for predicting virality on TikTok at a large scale, but several research projects and commercial tools have proposed their own metrics and predictive models \parencite{roring2024decoding, SahJordan2025DecodingReddit}. However, no prior research has applied standard virality criteria to TikTok videos in an election setting in Nepal, necessitating a flexible approach to capture its role in driving public attention during Nepal’s 2022 elections.
+No universally accepted standard measure for predicting virality on TikTok was found on my literature, however several research projects and commercial tools have proposed their own metrics and predictive models \parencite{roring2024decoding, SahJordan2025DecodingReddit}. Additionally, no prior research had practiced standard virality criteria of TikTok videos in an election setting in Nepal, necessitating a flexible approach to capture its role in driving public attention during Nepal’s 2022 elections. For this study, Virality was operationalized as a composite score reflecting relative audience engagement, emphasizing interaction over raw popularity. To do this, four \textbf{normalized engagement rates}.
 
-For this study, Virality was operationalized as a composite score reflecting relative audience engagement, emphasizing interaction over raw popularity. 
-
-To do this, I calculated four \textbf{normalized engagement rates} - Like rate, Comment rate, Share rate and Collect rate.
-
-These rates were combined with the logarithm of raw view count to form a \textbf{virality score}, using a weighted formula that emphasizes active user engagement. The final formula is:
+The rates were combined with the logarithm of raw view count to form a \textbf{virality score}, using a weighted formula that emphasizes active user engagement. The final formula is:
 \begin{multline}
-\text{virality score} = 0.35 \cdot \log(1 + \text{views}) + 0.25 \cdot \log(1 + \text{like rate}) + 0.20 \cdot \log(1 + \text{comment rate})  \\ + 0.15 \cdot \log(1 + \text{share rate}) + 0.05 \cdot \log(1 + \text{collect rate})
+\text{virality score} = 0.35 \cdot \log(1 + \text{views}) + 0.25 \cdot \log(1 + \text{like rate}) + 0.20 \cdot \\ \log(1 + \text{comment rate}) + 0.15 \cdot \log(1 + \text{share rate}) \\ + 0.05 \cdot \log(1 + \text{collect rate})
 \end{multline}
 Weightings of (0.35, 0.25, 0.20, 0.15, 0.05) were assigned to prioritize active engagement behaviors. To assess the robustness of this approach, a sensitivity analysis was conducted using equal weighting across components. The resulting agreement between the original and equal-weight virality labels was 99.53\%, suggesting strong stability of the classification. Given the exploratory nature of this study and time constraints, weightings were fine-tuned iteratively based on observed distributions without external validation.
-\newpage 
 The score was transformed into a ternary classification label for RQ1:
 \begin{itemize}
     \item \textbf{Low Virality (0)}: Bottom third of scores.
@@ -236,6 +315,7 @@ Textual or Content features aim to capture the semantic, emotional, and contextu
     unchanged:\n\n{masked_text}"
     \end{verbatim}
 \end{itemize}
+\newpage
 \subsection{Visual Features}
 \begin{itemize}
  \item \textbf{Visual Features}: A frame at the 3-second mark was extracted \parencite{TikTokCreative2023}, captioned using GPT-4o Vision API \parencite{OpenAI2024gpt4o}, embedded with BGE-m3, and reduced via PCA (\texttt{image\_pca\_*}).
@@ -258,7 +338,7 @@ Sender features capture the video uploader’s social capital and credibility:
 
 \begin{itemize}
     \item \textbf{Creator Tier Metrics}: A categorical feature, \texttt{creator\_tier}, was derived from follower counts to analyze nonlinear effects of audience reach on virality. Using the empirical distribution of follower counts across 2,964 videos (25th percentile: $\approx 983$, 50th: $\approx 2,191$, 75th: $\approx 8,120$, 90th: $\approx 48,740$, 95th: $\approx 108,700$, 99th: $\approx 376,500$), we defined tiers as: Regular ($< 10,000$ followers), Micro Influencer ($10,000–49,999$), Macro Influencer ($50,000–99,999$), and Mega Influencer ($\geq 100,000$). This data-driven approach ensures relevance to Nepal’s 2022 election context and enhances model interpretability.
-    
+\newpage
     \item \textbf{Verification Status}: A binary feature, \texttt{author\_verified}, indicates official TikTok verification, reflecting institutional presence or public figure status that may influence platform distribution and audience trust.
     
     \item \textbf{Account Age}: Derived from \texttt{author\_create\_time}, \texttt{author\_days\_on\_platform} measures the creator’s active duration on TikTok, capturing their tenure and experience, which may affect content strategy and reach.
@@ -271,17 +351,17 @@ Predictor variables from platform metadata, sender attributes, and content modal
 To prevent label leakage, post-performance variables (\texttt{video\_like\_count}, \texttt{video\_commentcount}, \texttt{video\_sharecount}, and their normalized counterparts \texttt{like\_rate}, \texttt{comment\_rate}, \texttt{share\_rate}, \texttt{collect\_rate}) were excluded, focusing strictly on pre-upload features like content semantics (text, image, audio) and user metadata (e.g., \texttt{creator\_tier}, verification status). This structured predictor matrix ensured consistent model input and enabled nuanced evaluation of content, platform, and sender contributions to virality prediction.
 
 \section{Sentence Embedding Model Selection}
-To represent multilingual Nepali election-related texts in a vector space, an empirical evaluation of four sentence embedding models was conducted: LaBSE, paraphrase-multilingual-MiniLM-L12-v2 (MiniLM-L12), all-MiniLM-L6-v2, and BGE-m3. Using a curated dataset of 11 text pairs, cosine similarity scores were computed and compared against human judgments of semantic closeness.
-
-\textbf{Findings:}
+We evaluate four sentence embedding models on Nepali election-related texts:
 \begin{itemize}
-    \item LaBSE distinguished dissimilar pairs but underestimated moderate similarities.
-    \item MiniLM-L12 provided balanced scores across similarity levels.
-    \item all-MiniLM-L6-v2 was inconsistent, often overestimating unrelated text similarity.
-    \item BGE-m3 best aligned with human intuition, capturing thematic relationships in the election context.
+    \item LaBSE \parencite{reimers-2019}
+    \item paraphrase-multilingual-MiniLM-L12-v2 (MiniLM-L12) \parencite{paraphrase-multilingual-MiniLM-L12-v2}
+    \item all-MiniLM-L6-v2 \parencite{all-MiniLM-L6-v2}
+    \item BGE-M3 \parencite{bge-m3}
 \end{itemize}
 
-\textbf{Selection:} BGE-m3 was chosen for its superior performance in reflecting semantic judgments in domain-specific Nepali discourse.
+BGE-M3 demonstrates multi-lingual capabilities supporting 100+ languages with dense/sparse retrieval \parencite{bge-m3}. The MiniLM variants offer optimized performance for semantic similarity tasks \parencite{reimers-2019}.
+
+Based on evaluation of sentence-embeddings (See Table~\ref{tab:embedding_comparison_appendix}) for 11-pairs of random sentence-text pairs, BGE-m3 was chosen for its more balanced performance in compared to other models. 
 
 \section{Analytical Framework}
 
@@ -557,15 +637,15 @@ A local explanation using a SHAP force plot was conducted for a test sample (ind
 \section{Error Analysis}
 An error analysis was conducted on a stratified test sample ($n=890$) to identify misclassification patterns in the tuned XGBoost model (accuracy: 0.60, AUC-ROC: 0.7871) for ternary virality classification (0 = low, 1 = medium, 2 = high). Three specific cases and a general pattern of class boundary errors were examined to understand the model’s behavior.
 
-\subsection{Case 1: Overprediction of Medium Virality as High}
+\textbf{Case 1: Overprediction of Medium Virality as High}
 A medium-viral video (ID: 7095593756967046426, true label: 1) with 2,501 views, 232 likes, 3,161 followers, a creator \texttt{user\_like\_count} of 19,854, and \texttt{Video\_count} of 155 was mispredicted as high-viral (Class 2). The model’s reliance on \texttt{user\_like\_count} (mean $|$SHAP$|$ $\approx$ 0.8) and \texttt{Video\_count} (mean $|$SHAP$|$ $\approx$ 0.5), which strongly influence high-virality predictions, likely drove this overprediction, as the creator’s high engagement history overshadowed the video’s moderate engagement metrics.
 
-\subsection{Case 2: Underprediction of High Virality as Medium}
+\textbf{Case 2: Underprediction of High Virality as Medium}
 A high-viral video (ID: 7089029999780498715, true label: 2) with 2,820,140 views, 161,239 likes, 2,382 comments, 2,423 shares, 49,400 followers, a \texttt{user\_like\_count} of 1,300,000, and \texttt{Video\_count} of 1,876 was mispredicted as medium-viral (Class 1). Despite exceptionally high engagement metrics, the prediction may have been moderated by content features favoring medium virality (e.g., \texttt{audio\_pca\_0}, mean $|$SHAP$|$ $\approx$ 0.3). Although \texttt{user\_like\_count} and \texttt{Video\_count} strongly support high-virality predictions, the model may struggle to capture the combined effect of extreme engagement values, possibly due to the limited impact of content embeddings (mean SHAP: audio 0.0013, image 0.0010).
 
-\subsection{Misclassifications Between Adjacent Classes}
-Misclassifications were most frequent between adjacent classes, particularly low (Class 0) and medium (Class 1) virality, with 62\% of Class 1 errors misclassified as Class 0 and 48\% of Class 0 errors as Class 1. This reflects overlapping engagement distributions, highlighting the model’s challenge in distinguishing nuanced engagement levels, as evidenced by the low F1-score for Class 1 (0.51).
-
+\textbf{Case 3: Misclassifications Between Adjacent Classes}
+Misclassifications were most frequent between adjacent classes, particularly low (Class 0) and medium (Class 1) virality, with 62\% of Class 1 errors misclassified as Class 0 and 48\% of Class 0 errors as Class 1, highlighting the model’s challenge in distinguishing nuanced engagement levels, as evidenced by the low F1-score for Class 1 (0.51).
+\newpage
 \section{Communication Styles and Political Content Themes}
 To investigate how communication styles and political content themes interact to influence the virality of TikTok videos during Nepal’s local elections, we employed an Ordinary Least Squares (OLS) regression model. The dependent variable was the z-transformed Box-Cox virality score (\( z_{bc_{\text{virality}}} \)), with main effects for communication style and political content theme, their interaction (Style \(\times\) Theme), and control variables including log-transformed follower count, author verification status, and days before election day. Full model output is provided in Appendix~\ref{tab:ols_virality_summary}.
 
@@ -581,6 +661,7 @@ The filtered dataset from the sample comprised 1,526 TikTok videos, with politic
     \item CPN (Maoist) (\texthindi{हँसिया हतौडा/माओवादी}) — count: 84
     \item General election-themed content (non-party affiliated) — count: 687
 \end{itemize}
+\newpage
 Non-political categories (e.g., Bhojpuri, Funny, Speech, Patriotic) were excluded from the OLS regression to maintain thematic focus and address class imbalance but were retained for exploratory style distribution analysis to contextualize broader communication strategies. Certain style--theme combinations, such as Comedic--Maoist (\( n = 5 \)), had limited representation, warranting caution in interpreting their coefficients.
 
 \subsection{Main Effects}
@@ -593,11 +674,11 @@ The regression (see Appendix~\ref{tab:ols_virality_main}) revealed significant m
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.6\textwidth]{figures/RQ2/Mean_Z_Virality.png}
+\includegraphics[width=0.8\textwidth]{figures/RQ2/Mean_Z_Virality.png}
 \caption{Mean z-transformed virality scores by communication style and political content theme.}
 \label{fig:Mean_Z_Virality}
 \end{figure}
-
+\newpage
 \subsection{Interaction Effects}
 Interaction terms highlighted complex dynamics between styles and themes:
 \begin{itemize}[noitemsep]
@@ -616,80 +697,10 @@ Exploratory analysis of style--theme distributions revealed strategic content fr
 \textit{Please note the dotted red line indicates the separation between the Political Parties Support/Campaign Songs vs. Other Forms of Audio/Content Theme. }
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.8\textwidth]{figures/RQ2/TikTok_Comm_Heatmap.png}
+\includegraphics[width=1.0\textwidth]{figures/RQ2/TikTok_Comm_Heatmap.png}
 \caption{Heatmap of communication style and content theme distributions.}
 \label{fig:TikTokComm}
 \end{figure}
-
-% \chapter{Discussion}
-% \label{chap:discussion}
-
-% This study investigates the predictability of political virality on TikTok during Nepal’s 2022 local elections (RQ1) and the interaction of communication styles and political content themes in shaping engagement (RQ2). The findings reveal the complex interplay of content, platform, and sender characteristics, offering insights into the dynamics of political communication in a youth-dominated, algorithm-driven social media ecosystem. 
-
-% \subsection{Multimodal Dynamics of Virality}
-% The SHAP analysis (Figure~\ref{fig:shap_summary}) revealed that no single modality dominated, underscoring the complex, multifaceted nature of TikTok engagement during Nepal’s election period. Sender characteristics emerged as the most predictive, with \texttt{user\_like\_count} (mean $|$SHAP$|$ $\approx$ 0.8) and \texttt{Video\_count} (mean $|$SHAP$|$ $\approx$ 0.5) strongly influencing high-virality predictions (Class 2). Content embeddings also played a significant role, with \texttt{audio\_pca\_0} (mean $|$SHAP$|$ $\approx$ 0.3) impacting medium-virality predictions (Class 1) and \texttt{image\_pca\_2} (mean $|$SHAP$|$ $\approx$ 0.1) contributing to high virality, as observed in the local explanation of video ID 7093702566613110043 (Figure~\ref{fig:shap_force_plot}). This video, a humorous commentary on a news story involving Former Finance Minister Janardan Sharma, leveraged a news broadcast scene with an airplane inset and a comedic audio transcript, aligning with high-engagement patterns.
-
-% Audio embeddings captured Nepal’s oral tradition (e.g., humorous, voiceovers with comedy, movie/dilaogues), while image embeddings reflected political imagery (appeal for charismatic leader), aligning with multimodal engagement studies \citep{highfield2016instagrammatics} (also discussed in RQ2). The influence of video_diversification_id_10083.0 (critical political speech, humor) suggests thematic content drives high virality, but its sparsity necessitates future mapping to semantic categories.
-
-% \subsection{Sender Influence and Algorithmic Bias}
-% The SHAP analysis underscored the outsized influence of sender characteristics, with \texttt{user\_like\_count}, \texttt{Video\_count}, and \texttt{followers} (mean $|$SHAP$|$ $\approx$ 0.4) among the top predictors of high virality. This reflects TikTok’s algorithmic bias toward amplifying content from creators with established visibility, a well-documented phenomenon in platform studies \parencite{bucher2018ifthen}. In Nepal’s 2022 election context, this dynamic favored prominent figures, such as independent candidate Balen Shah, who effectively leveraged social media platform such as Facebook to get traction (and ifnluential page such as Routine of Nepal Banda (currently 3M+ followers) heavily promoted him \parencite{Kandel2024}, while also had a substantial following in the past. It's effect was also seen in corollary with TikTok, which has a good base in Nepal but as not strong as Facebook \parencite{Onlinekhabar2022}. The error analysis illustrated this bias in Case 1 (ID: 7095593756967046426), where a medium-viral video was overpredicted as high-viral due to a high \texttt{user\_like\_count} (19,854), highlighting the model’s tendency to prioritize creator engagement over actual video performance. This bias may marginalize lesser-known candidates, raising equity concerns \citep{noble2018algorithms}. Error analysis showed underprediction of high-viral videos with strong engagement (Case 3, ID: 7089029999780498715: 2,820,140 views, 161,239 likes), possibly due to content features favoring medium virality, highlighting the need for balanced engagement metrics.
-
-
-
-
-% \subsection{Limits of Predictive Modeling}
-% Limits of Predictive Modeling
-% Nuanced factors like cultural authenticity and hyper-local sentiment remain challenging to quantify. The low impact of content embeddings (mean SHAP: audio 0.0013, image 0.0010) suggests PCA reduction limited semantic capture, as seen in the local explanation where desc_pca_0 had a negative impact. Frequent misclassifications between low and medium virality (62\% of Class 1 errors as Class 0) reflect overlapping engagement distributions, limiting precision for Class 1.
-
-
-% \section{Style--Theme Interactions in Political Communication (RQ2)}
-% \label{sec:rq2_discussion}
-% The OLS regression analysis (see Appendix~\ref{tab:ols_virality_summary}) revealed that communication styles and political content themes interact in context-dependent ways to shape TikTok virality, with significant implications for political messaging strategies.
-
-% \subsection{Style Effects: Humor and Civic Engagement}
-% Comedic (\( \beta = 1.87 \), \( p = 0.003 \)) and Civic Awareness (\( \beta = 1.19 \), \( p = 0.037 \)) styles were strongly associated with virality, aligning with TikTok’s entertainment-driven platform logic \citep{zulli2020tiktok}. Humor’s effectiveness reflects its ability to capture attention in a crowded content ecosystem, while Civic Awareness resonates with youth audiences seeking educational yet accessible political content. However, these styles’ impact varied significantly by political theme.
-
-% \subsection{Independent Candidates: Virality and Authenticity}
-% Content about independent candidates, particularly figures like Balen Shah, exhibited higher virality (\( \beta = 1.06 \), \( p = 0.028 \)) compared to general election-themed content. This reflects their appeal among Nepal’s youth, who often view independents as anti-establishment alternatives to legacy parties. However, a significant negative interaction between Comedic style and Independent candidate content (\( \beta = -2.56 \), \( p < 0.001 \)) suggests that humor may undermine perceived authenticity. Audiences appear to expect sincerity from independents, penalizing comedic framing as trivializing or inauthentic.
-
-% \subsection{Legacy Parties: Challenges of Civic Messaging}
-% Civic Awareness styles paired with Congress (\( \beta = -1.94 \), \( p = 0.007 \)) and UML (\( \beta = -1.47 \), \( p = 0.029 \)) content showed negative interactions, reducing virality. This may reflect youth skepticism toward legacy parties, perceived as entrenched and disconnected from grassroots concerns. TikTok’s young users may view didactic or educational tones from these parties as inauthentic, preferring performative or emotionally resonant content instead.
-
-% The heatmap analysis (see Fig.~\ref{fig:TikTokComm}) revealed that legacy parties heavily relied on Musical/Entertainment styles (42--48\%), featuring campaign songs and symbolic imagery (e.g., the Tree for Congress). However, this stylistic saturation diluted their impact, rendering the style statistically non-significant in the regression model. In contrast, less common styles like Charisma/Leadership, prevalent among independent candidates (28.4\%), offered greater marginal returns, leveraging rap or hip-hop to blend cultural performance with political branding.
-
-% \subsection{Cultural Strategies and Connection to RQ1}
-% The style–theme distribution reflects deliberate framing: non-political satirical content used Comedic or Critique/Frustration styles, facilitating indirect political discourse through parody, while traditional parties leveraged cultural familiarity via folk music. These findings complement RQ1’s XGBoost results, where video_diversification_id_10083.0 (critical political speech, humor) predicted high virality, aligning with the OLS’s emphasis on Comedic style. Sender features like follower count were significant in both models, reinforcing TikTok’s bias toward established creators, though the OLS highlights content-specific dynamics (e.g., Independent candidates’ appeal) not captured by RQ1’s embeddings.
-
-% \section{Broader Implications}
-% \label{sec:implications}
-
-% The findings across RQ1 and RQ2 offer three key insights for political communication in digital spaces:
-% \begin{itemize}[noitemsep]
-%     \item \textbf{Algorithmic Predictability}: Virality can be forecasted with modest accuracy, but biases toward popular creators limit equitable visibility, reinforcing existing power structures.
-%     \item \textbf{Style as a Political Tool}: Communication styles actively shape engagement, with humor and charisma amplifying independent candidates’ appeal, while legacy parties struggle to overcome youth skepticism.
-%     \item \textbf{Youth-Driven Discourse}: TikTok’s emphasis on authenticity, emotion, and performance creates opportunities for independent movements but risks amplifying performative populism or misinformation.
-% \end{itemize}
-% These dynamics are particularly salient in Nepal, where youth disillusionment with traditional politics fuels demand for novel, culturally resonant messaging. However, the findings have global relevance, as platforms like TikTok increasingly mediate political expression worldwide.
-% \newpage
-% \section{Limitations and Future Research}
-% \label{sec:limitations}
-
-% Despite its contributions, this study has limitations:
-% \begin{itemize}[noitemsep]
-%     \item The \texttt{video\_diversification\_id} variable lacks semantic clarity, introducing potential noise in predictive models.
-%     \item Mixed-language transcripts and Romanized Nepali posed challenges for audio embeddings, limiting textual fidelity.
-%     \item Class imbalance and the dataset’s focus on the 2022 election period may constrain generalizability.
-% \end{itemize}
-
-% Future research could address these by:
-% \begin{itemize}[noitemsep]
-%     \item Developing time-series models to capture virality dynamics over campaign cycles.
-%     \item Comparing virality patterns across platforms (e.g., YouTube Shorts, Instagram Reels).
-%     \item Conducting audience reception studies using comment analysis or surveys to explore user perceptions.
-%     \item Employing advanced NLP techniques, such as multilingual embeddings or Fine-Tuned version of Nepali or Nepali-Romanized textual understanding to enhance audio and textual analysis.
-% \end{itemize}
-
-% By addressing these gaps, scholars can further illuminate the evolving role of social media in political communication, particularly in diverse, multilingual contexts like Nepal.
 
 \chapter{Discussion}
 \label{chap:discussion}
@@ -698,18 +709,15 @@ This study examines the predictability of political virality on TikTok during Ne
 
 \section{Predictability of Political Virality (RQ1)}
 \label{sec:rq1_discussion}
-The tuned XGBoost classifier achieved an accuracy of 60\%, a macro F1-score of 0.60, and an AUC-ROC of 0.7871, outperforming a random baseline (33.3\%) for the three-class virality prediction task (low, medium, high) on a test set of 890 videos. These results validate the predictive power of pre-upload features—content (audio, image, text embeddings), platform, and sender characteristics—in Nepal's election context.
+The tuned XGBoost classifier achieved an accuracy of 60\%, a macro F1-score of 0.60, and an AUC-ROC of 0.7871, outperforming a random baseline (33.3\%) for the three-class virality prediction task (low, medium, high) on a test set of 890 videos. These results validate the predictive power of pre-upload features—content (audio, image, text embeddings), platform, and sender characteristics.
 
 However, medium virality (Class 1) was challenging, with 62\% of Class 1 errors misclassified as Class 0, reflecting overlapping engagement distributions. Error cases showed biases, such as overprediction for high-profile creators (Case 1, ID: 7095593756967046426) and underprediction for videos with strong engagement but missing comments (Case 2, ID: 7092437819582336283). 
-
-% \subsection{Multimodal Dynamics}
-% Audio embeddings effectively captured Nepal's rich oral tradition, where campaign speeches and humorous voiceovers resonated strongly with audiences. On the other hand, image embeddings reflected political imagery, including visuals commonly seen in news broadcasts and public TV debates/fiery exchanges. For example, the controversial and popular TV show Dhamala Ko Hamala \parencite{Dorjee2022}, whose many clips with celebrities which became a subject of viral-memes/trends, aligned with broader multimodal engagement patterns \parencite{highfield2016instagrammatics}. Furthermore, platform-specific features, such as \texttt{diversification\_id\_10083.0} (mean $|$SHAP$|$ $\approx$ 0.1), which were linked to critical political speech and humor, played a significant role in boosting virality predictions.
 
 \subsection{Sender Influence and Algorithmic Bias}
 
 Sender characteristics, particularly \texttt{user\_like\_count}, \texttt{Video\_count}, and \texttt{followers} (mean $|\text{SHAP}|$ $\approx$ 0.4), played a significant role in predicting high virality, reflecting TikTok’s bias toward established creators \parencite{bucher2018ifthen}. During Nepal’s 2022 elections, this dynamic amplified the visibility of prominent figures such as independent candidate Balen Shah, whose campaign gained additional momentum through cross-platform promotion, including endorsements from influential pages like Routine of Nepal Banda \parencite{Kandel2024}.
 \newpage
-Error analysis reveals fairness concerns in virality prediction, as the model’s reliance on sender features like \texttt{user\_like\_count}—mirroring the \texttt{virality\_score} design—often prioritizes established creators (e.g., Case 1 overprediction). This aligns with TikTok’s algorithmic tendency to amplify visible accounts \parencite{noble2018algorithms}, potentially marginalizing grassroots voices and skewing political discourse in Nepal’s election context. However, this also partly explains or contracts with how TikTo's unique affordances also been linked widely with existingl gireuare, how expos-re of low-view vidoes, and its automted "For You" curation, fundamentally reshap or riculatres online, democratizing attengiotn by offering each piece of conent a chance to reach wide aduience\parencite{guinaudeau2022fifteen}. However, The low impact of content embeddings (mean SHAP: audio 0.0013, image 0.0010) suggests PCA reduction limited semantic capture, potentially missing nuanced election themes. H
+Error analysis reveals fairness concerns in virality prediction, as the model’s reliance on sender features like \texttt{user\_like\_count}—mirroring the \texttt{virality\_score} design—often prioritizes established creators (e.g., Case 1 overprediction). This aligns with TikTok’s algorithmic tendency to amplify visible accounts \parencite{noble2018algorithms}, potentially marginalizing grassroots voices and skewing political discourse in Nepal’s election context. However, this also partly explains or contracts with how TikTo's unique affordances also been linked widely with existingl gireuare, how expos-re of low-view vidoes, and its automted "For You" curation, fundamentally reshap or riculatres online, democratizing attengiotn by offering each piece of conent a chance to reach wide aduience\parencite{guinaudeau2022fifteen}. However, The low impact of content embeddings (mean SHAP: audio 0.0013, image 0.0010) suggests PCA reduction limited semantic capture, potentially missing nuanced election themes. 
 
 \subsection{Limits of Predictive Modeling}
 The model’s predictive success is tempered by limitations in capturing nuanced social factors, such as cultural authenticity or hyper-local sentiment. The low impact of content embeddings (mean SHAP: audio 0.0013, image 0.0010, text 0.0007) suggests that PCA reduction (100 components) compressed semantic nuances, as seen in the local explanation where \texttt{desc\_pca\_0} negatively impacted prediction. Frequent misclassifications between low and medium virality (62\% of Class 1 errors as Class 0, 48\% of Class 0 as Class 1) reflect overlapping engagement distributions, limiting precision for Class 1. These challenges underscore the difficulty of quantifying context-specific factors in Nepal, such as regional dialects or grassroots sentiment, which are critical to political communication.
@@ -728,7 +736,6 @@ Content about independent candidates, such as Balen Shah, exhibited higher viral
 \subsection{Legacy Parties: Challenges of Civic Messaging}
 The OLS regression analysis revealed that Civic Awareness communication styles, when paired with content related to legacy parties such as Congress (\(\beta = -1.94\), \(p = 0.007\)) and UML (\(\beta = -1.47\), \(p = 0.029\)), significantly reduced virality. This negative interaction likely stems from widespread youth skepticism toward established political entities, perceived as emblematic of entrenched governance structures and lacking transformative vision \parencite{Onlinekhabar2022}. TikTok’s predominantly young user base appears to reject didactic or overtly educational tones from legacy parties, favoring instead performative, emotionally engaging, or culturally innovative content, even for serious political discourse \parencite{KarimiFox2023}.
 
-\newpage
 Heatmap analysis (Figure~\ref{fig:TikTokComm}) revealed that legacy parties, such as Congress and UML, predominantly employed Musical/Entertainment styles, constituting 42--48\% of their content. These styles often featured traditional folk-inspired campaign songs infused with symbolic imagery, such as the Tree emblem for Congress or the Sun for UML. 
 
 In contrast, independent candidates, notably Balen Shah leveraged Charisma/Leadership styles (28.4\% of their content), drawing on contemporary art forms like rap and hip-hop. Shah’s campaign, amplified by supporters, capitalized on his prior prominence in Nepal’s rap scene to amplify his campaign. Both Shah and another independent candidates, such as Harka Sampang from Dharan (Eastern City in Nepal), effectively employed powerful symbol stick (\textit{lauro} or \texthindi{लौरो} in Nepali), a metaphor evoking support for the elderly and a call to challenge corrupt leadership, which became a symbol of uniting independent voices opposing the traditional parties \parencite{AnnapurnaExpress2022}. Th strategic use of these culturally resonant symbols, alongside modern performative styles, allowed independent candidates to resonate more strongly with younger audiences, reinforcing their position as agents of change.
@@ -805,7 +812,7 @@ While this study achieved 60\% predictive accuracy for virality using selected p
             \item No Hugging Face model fully addressed transliteration, translation, and semantic embedding for code-switched Nepali-English text. SeamlessM4T-medium handled Devanagari better, but struggled with code-switching, while OpenAI’s API proved more accurate \parencite{reddit2023gpt4nepali}.
         \end{itemize}
 \end{itemize}
-
+\newpage
 \section{Future Research}
     Future research could address these limitations by:
     \begin{itemize}
@@ -825,14 +832,16 @@ While this study achieved 60\% predictive accuracy for virality using selected p
 % \section{Final Remarks}
 \newpage
 
-\chapter{Appendix}
+% ---------------- Appendix ----------------
+\clearpage
+\pagenumbering{roman} % Switch back to Roman for back matter
 %TC:ignore
+\chapter{Appendix}
 
+\phantomsection
 \addcontentsline{toc}{section}{Appendix}
 \subsection*{Keywords and Hashtags for Nepal Local Election 2022}
 \label{appendix:keywords}
-The following is a list of keywords and hashtags related to the Nepal Local Election 2022:
-
 \begin{itemize}
     \item election
     \item elections
@@ -857,8 +866,6 @@ The following is a list of keywords and hashtags related to the Nepal Local Elec
 \end{itemize}
 
 \subsection*{A.1 Audio PCA Samples (\texttt{audio\_pca\_0} Extremes)}
-%TC:endignore
-%TC:ignore
 
 \begin{table}[H]
 \centering
@@ -876,7 +883,6 @@ The following is a list of keywords and hashtags related to the Nepal Local Elec
 \bottomrule
 \end{tabular}
 \end{table}
-%TC:endignore
 
 \begin{table}[H]
 \centering
@@ -1000,7 +1006,7 @@ Table~\ref{tab:codebook} details the communication style codes, their labels, de
 
 Table~\ref{tab:content_themes} presents the content themes used for zero-shot classification of TikTok videos in the analysis of political communication during Nepal’s 2022 Local Elections. These themes were derived to capture the diverse range of political and non-political content, facilitating the style--theme interaction analysis in RQ2 (Appendix~\ref{tab:ols_virality_summary}).
 
-\begin{longtable}{@{} p{7cm} p{10cm} @{}}
+\begin{longtable}{@{} p{5cm} p{10cm} @{}}
 \caption{Content Themes for Zero-Shot Classification} \label{tab:content_themes} \\
 \toprule
 \textbf{Theme} & \textbf{Potential Content} \\
@@ -1012,10 +1018,10 @@ Table~\ref{tab:content_themes} presents the content themes used for zero-shot cl
 \midrule
 \endhead
 \small
-UML (\texthindi{सूर्य/एमाले}) Support/Song & Campaign songs or content supporting CPN (UML), often featuring the Sun symbol. \\
-Congress (\texthindi{काँग्रेस/रुख}) Support/Song & Campaign songs or content supporting Nepali Congress, often featuring the Tree symbol. \\
-Maoist(\texthindi{हँसिया/हतौडा}) Support/Song & Campaign songs or content supporting CPN (Maoist), often featuring the Sickle/Hammer. \\
-Independent (\texthindi{लौरो}) Support/Song & Campaign songs or content supporting Independent Candidate, mainly Balen Shah, also featuring other youth/independents such as Harka Sampang\\
+UML (\texthindi{सूर्य/एमाले}) & Campaign songs or content supporting CPN (UML), often featuring the Sun symbol. \\
+Congress (\texthindi{काँग्रेस/रुख}) & Campaign songs or content supporting Nepali Congress, often featuring the Tree symbol. \\
+Maoist(\texthindi{हँसिया/हतौडा}) & Campaign songs or content supporting CPN (Maoist), often featuring the Sickle/Hammer. \\
+Independent (\texthindi{लौरो}) & Campaign songs or content supporting Independent Candidate, mainly Balen Shah, also featuring other youth/independents such as Harka Sampang\\
 
 Political Speech & Speeches by candidates or party leaders, focusing on election campaigns or policies. \\
 Bollywood & Songs or audio from Bollywood movies, often used for entertainment or lip-syncing. \\
@@ -1040,8 +1046,31 @@ Other/Non-Political & Miscellaneous content, including non-political explanatory
 \chapter{Supplementary Materials}
 \section{GitHub Repository Details}
 \section{Additional Tables and Figures}
-%TC:ignore
 
+\begin{sidewaystable}[ht]
+\centering
+\caption{Comparison of sentence embedding model performance on sample Nepali election text pairs}
+\label{tab:embedding_comparison_appendix}
+\small % Back to \small for landscape readability
+\begin{tabular}{@{}p{2cm}p{3cm}S[table-format=1.4]S[table-format=1.4]S[table-format=1.4]S[table-format=1.4]p{2.5cm}p{3.5cm}@{}}
+\toprule
+\textbf{Index pair} & \textbf{Similarity type} & {\textbf{LaBSE}} & {\textbf{MiniLM-L12}} & {\textbf{all-MiniLM-L6-v2}} & {\textbf{BGE m3}} & \textbf{Best model(s)} & \textbf{Rationale} \\
+\midrule
+1035;1293 & Moderate (Congress rally, different visuals) & 0.4617 & 0.4965 & 0.5465 & 0.4905 & all-MiniLM-L6-v2 & Highest mid-range score reflects shared party and activity \\
+314;457 & High (CPN UML song, different visuals) & 0.8320 & 0.8383 & 0.8040 & 0.8780 & BGE m3 & Highest score reflects strong topic match \\
+135;180 & Very high (UML song, different visuals) & 0.9232 & 0.9665 & 0.9398 & 0.9509 & MiniLM-L12, BGE m3 & Very high scores appropriate for near-identical topics \\
+865;360 & Low-moderate (Voting appeal vs.\ local election) & 0.2961 & 0.4851 & 0.0879 & 0.5770 & MiniLM-L12, BGE m3 & Moderate scores capture shared election theme \\
+890;882 & Low-moderate (Voting integrity vs.\ election duty) & 0.1150 & 0.3134 & 0.6181 & 0.3777 & MiniLM-L12, BGE m3 & Low-moderate scores appropriate; all-MiniLM-L6-v2 too high \\
+1889;2226 & Low (Generic election vs.\ specific Balen) & 0.1047 & 0.3855 & 0.6954 & 0.5455 & LaBSE & Lowest score appropriate; others too high \\
+1122;1242 & Low (General query vs.\ specific Balen) & 0.1327 & 0.2775 & 0.1670 & 0.4773 & LaBSE, all-MiniLM-L6-v2 & Low scores appropriate; BGE m3 too high \\
+180;1648 & Low (UML song vs.\ general voting/petrol) & 0.0854 & 0.1194 & 0.1850 & 0.3242 & LaBSE, MiniLM-L12, all-MiniLM-L6-v2 & Low scores appropriate \\
+1687;1862 & Low (UML vs.\ Balen campaign) & 0.1238 & 0.5294 & 0.6342 & 0.3743 & LaBSE & Lowest score appropriate for opposing subjects \\
+888;1462 & Moderate (Campaign comedy vs.\ election dialogue) & 0.0651 & 0.3088 & 0.1797 & 0.4557 & BGE m3, MiniLM-L12 & Moderate scores capture thematic link \\
+352;1331 & Moderate (UML candidate vs.\ child supporter) & 0.0229 & 0.2001 & 0.4907 & 0.3105 & all-MiniLM-L6-v2, BGE m3 & Moderate scores capture shared party theme \\
+\bottomrule
+\multicolumn{8}{p{14cm}}{\textit{Note:} Similarity types describe topical overlap and visual differences. Models include LaBSE, MiniLM-L12, all-MiniLM-L6-v2, and BGE m3. UML refers to Unified Marxist-Leninist party; Balen refers to a specificible specific candidate.}
+\end{tabular}
+\end{sidewaystable}
 % --- Table 1: Summary Statistics ---
 \begin{sidewaystable}
     \centering
@@ -1210,7 +1239,6 @@ Other/Non-Political & Miscellaneous content, including non-political explanatory
 \hline
 \end{tabular}
 \end{table}
-
 \clearpage % Ensure content after the tables starts on a new page
 \begin{table}[h]
     \centering
@@ -1238,4 +1266,37 @@ Other/Non-Political & Miscellaneous content, including non-political explanatory
 \end{table}
 %TC:endignore
 
+
+
+\printbibliography[title={References}]
+
+% ---------------- AI Disclosure ----------------
+\clearpage
+\chapter*{AI Disclosure}
+\addcontentsline{toc}{section}{AI Disclosure}
+In accordance with the Hertie School's AI Guidelines (February 2023), I declare that I have used AI tools such as ChatGPT, Grok, and Google AI Studio for assistance in coding and thesis preparation. These tools were utilized in the following manner: 
+\begin{enumerate}
+\item Code generation and debugging
+\item Drafting and structuring certain sections of the text
+\item Assistance with LaTeX formatting
+\item Help with language refinement and clarity
+\end{enumerate}
+I confirm that all AI-generated content has been carefully reviewed, edited, and verified by me, and I take full responsibility for all content, including any factual errors or inaccuracies that may exist in the final document. The use of these tools has been in accordance with the Hertie School's policy on academic integrity, with all significant contributions properly acknowledged.
+
+% ---------------- Statement of Authorship ----------------
+\clearpage
+\chapter*{Statement of Authorship}
+\addcontentsline{toc}{section}{Statement of Authorship}
+I hereby confirm and certify that this master thesis is my own work. All ideas and language of others are acknowledged in the text. All references and verbatim extracts are properly quoted and all other sources of information are specifically and clearly designated. I confirm that the digital copy of the master thesis that I submitted on 28th April 2025 is identical to the printed version I submitted to the Examination Office on 29th April 2025.
+
+\vspace{1cm}
+\textbf{DATE:} 28th April 2025 \par
+\vspace{0.5cm}
+
+\textbf{NAME:} Nima Thing \par
+\vspace{0.5cm}
+
+\textbf{SIGNATURE:} \par
+\vspace{0.2cm}
+\includegraphics[width=5cm]{figures/NimaThing_SignatureRAW.jpeg} % Replace with your signature file
 \end{document}
